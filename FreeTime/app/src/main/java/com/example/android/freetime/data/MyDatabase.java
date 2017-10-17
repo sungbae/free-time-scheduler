@@ -1,4 +1,4 @@
-package com.example.android.freetime;
+package com.example.android.freetime.data;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -9,6 +9,8 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 /**
  * Created by sungbae on 10/14/17.
+ *
+ * This class is used as an example to demonstrate how to call database using SQLiteAssetHelper.
  */
 
 public class MyDatabase extends SQLiteAssetHelper {
