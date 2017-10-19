@@ -12,9 +12,6 @@ public class DatabaseManager {
 
     private DatabaseHelper dbHelper;
 
-    private DatabaseManager(Context context) {
-        dbHelper = new DatabaseHelper(context);
-    }
 
     public static synchronized DatabaseManager getInstance(Context context) {
         if (dbInstance == null)
@@ -22,7 +19,12 @@ public class DatabaseManager {
         return dbInstance;
     }
 
-    public DatabaseHelper getHelper() {
+    private DatabaseManager(Context context)
+    {
+        dbHelper = new DatabaseHelper(context);
+    }
+    public DatabaseHelper getHelper()
+    {
         return dbHelper;
     }
 }
