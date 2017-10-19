@@ -6,6 +6,7 @@ import com.example.android.freetime.models.User;
 import com.example.android.freetime.data.DatabaseHelper;
 import com.example.android.freetime.data.DatabaseManager;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -20,7 +21,34 @@ public class UserRepo implements IRepository {
         dbHelper = DatabaseManager.getInstance(context).getHelper();
     }
 
-    public List<User> getAll() {
+    @Override
+    public int create(Object item) {
+        int success = -1;
+        User user = (User) item;
+        try{
+            success = dbHelper.get_userDao().create(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return success;
+    }
+
+    @Override
+    public int update(Object item) {
+        return 0;
+    }
+
+    @Override
+    public int delete(Object item) {
+        return 0;
+    }
+
+    @Override
+    public Object findById(int id) {
+        return null;
+    }
+
+    public List<User> findAll() {
         return dbHelper.get_userRuntimeDao().queryForAll();
     }
 }
