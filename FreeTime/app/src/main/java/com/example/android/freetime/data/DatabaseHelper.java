@@ -1,10 +1,10 @@
-package com.example.android.freetime.util;
+package com.example.android.freetime.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.android.freetime.dao.User;
+import com.example.android.freetime.models.User;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
