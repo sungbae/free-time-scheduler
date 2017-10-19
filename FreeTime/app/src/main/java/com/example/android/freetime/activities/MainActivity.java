@@ -20,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.templabel);
 
         UserRepo userRepo = new UserRepo(this);
-        List<User> users = userRepo.getAll();
+        List<User> users = userRepo.findAll();
         String userNames = "";
         for (User user : users) {
-            userNames += user.FirstName + ", ";
+            userNames += user.getLastName() + ", ";
         }
 
         userNames = userNames.substring(0, userNames.length() - 2);

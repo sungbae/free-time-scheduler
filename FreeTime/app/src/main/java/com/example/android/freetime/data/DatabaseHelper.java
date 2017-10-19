@@ -53,7 +53,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      */
     public Dao<User, Integer> get_userDao() throws SQLException {
         if (_userDao == null) {
-            _userDao = getDao(User.class);
+            try {
+                _userDao = getDao(User.class);
+            }catch (java.sql.SQLException e){}
         }
         return _userDao;
     }
