@@ -9,18 +9,57 @@ import com.j256.ormlite.field.DatabaseField;
 public class User {
 
     @DatabaseField(generatedId = true)
-    public int UserID;
+    private int UserID;
 
     @DatabaseField
-    public String FirstName;
+    private String FirstName;
 
     @DatabaseField
-    public String LastName;
+    private String LastName;
 
     @DatabaseField
-    public String Email;
+    private String Email;
 
-    User() {
+    public User() {
         // This is needed for OrmLite
+    }
+
+    public User(String firstName, String lastName, String email) {
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Email = email;
+    }
+
+    public int getUserID() {
+        return UserID;
+    }
+
+    // Look in to removing because of auto generated ID's
+    public void setUserID(int userID) {
+        UserID = userID;
+    }
+
+    public String getFirstName() {
+        return FirstName;
+    }
+
+    public void setFirstName(String firstName) {
+        FirstName = firstName;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 }
