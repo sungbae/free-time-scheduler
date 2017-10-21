@@ -1,6 +1,5 @@
 package com.example.android.freetime.activities;
 
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;

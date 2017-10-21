@@ -19,14 +19,21 @@ import java.sql.SQLException;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
+    private static DatabaseHelper dbInstance;
+
     private static final String DATABASE_NAME = "FreeTime.db";
     private static final int DATABASE_VERSION = 1;
 
-    private Dao<User, Integer> _userDao;
-    private RuntimeExceptionDao<User, Integer> _userRuntimeDao;
+    private RuntimeExceptionDao<User, Integer> userDao = null;
 
-    public DatabaseHelper(Context context) {
+    private DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static synchronized DatabaseHelper getInstance(Context context) {
+        if (dbInstance == null)
+            dbInstance = new DatabaseHelper(context.getApplicationContext());
+        return dbInstance;
     }
 
     @Override
@@ -51,30 +58,16 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * Returns the Database Access Object (DAO) for our SimpleData class. It will create it or just give the cached
      * value.
      */
-    public Dao<User, Integer> get_userDao() throws SQLException {
-        if (_userDao == null) {
-            _userDao = getDao(User.class);
+    public RuntimeExceptionDao<User, Integer> getUserDao() {
+        if (userDao == null) {
+            userDao = getRuntimeExceptionDao(User.class);
         }
-        return _userDao;
+        return userDao;
     }
 
-    /**
-     * Returns the RuntimeExceptionDao (Database Access Object) version of a Dao for our SimpleData class. It will
-     * create it or just give the cached value. RuntimeExceptionDao only through RuntimeExceptions.
-     */
-    public RuntimeExceptionDao<User, Integer> get_userRuntimeDao() {
-        if (_userRuntimeDao == null) {
-            _userRuntimeDao = getRuntimeExceptionDao(User.class);
-        }
-        return _userRuntimeDao;
-    }
-
-    /**
-     * Close the database connections and clear any cached DAOs.
-     */
     @Override
     public void close() {
         super.close();
-        _userDao = null;
+        userDao = null;
     }
 }

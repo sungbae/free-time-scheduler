@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.example.android.freetime.models.User;
 import com.example.android.freetime.data.DatabaseHelper;
-import com.example.android.freetime.data.DatabaseManager;
 
 import java.util.List;
 
@@ -17,10 +16,10 @@ public class UserRepo implements IRepository {
     private DatabaseHelper dbHelper;
 
     public UserRepo(Context context) {
-        dbHelper = DatabaseManager.getInstance(context).getHelper();
+        dbHelper = DatabaseHelper.getInstance(context);
     }
 
     public List<User> getAll() {
-        return dbHelper.get_userRuntimeDao().queryForAll();
+        return dbHelper.getUserDao().queryForAll();
     }
 }
