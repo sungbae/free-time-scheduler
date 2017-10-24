@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorBackground"
     tools:context="com.example.android.freetime.activities.LoginActivity">
 
     <!-- Login progress -->
@@ -22,13 +23,27 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false">
 
         <LinearLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/loginTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Just In Time"
+                android:fontFamily="cursive"
+                android:textSize="50dp"
+                android:textColor="@color/colorWhite"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -41,6 +56,9 @@
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorWhite"
+                    android:background="@color/clear"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
@@ -59,17 +77,23 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
+                    android:textColorHint="@color/colorWhite"
+
+                    android:textColor="@color/colorWhite"
+                    android:background="@color/clear"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 
             <Button
+                android:background="@color/colorTitle"
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
+                android:textColor="@color/colorWhite"
                 android:textStyle="bold" />
 
         </LinearLayout>
