@@ -26,7 +26,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private RuntimeExceptionDao<User, Integer> userDao = null;
 
-    private DatabaseHelper(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -58,7 +58,20 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
      * Returns the Database Access Object (DAO) for our SimpleData class. It will create it or just give the cached
      * value.
      */
-    public RuntimeExceptionDao<User, Integer> getUserDao() {
+    public Dao<User, Integer> get_userDao() throws SQLException {
+        if (userDao == null) {
+            try {
+                userDao = getDao(User.class);
+            }catch (java.sql.SQLException e){}
+        }
+        return userDao;
+    }
+
+    /**
+     * Returns the RuntimeExceptionDao (Database Access Object) version of a Dao for our SimpleData class. It will
+     * create it or just give the cached value. RuntimeExceptionDao only through RuntimeExceptions.
+     */
+    public RuntimeExceptionDao<User, Integer> get_userRuntimeDao() {
         if (userDao == null) {
             userDao = getRuntimeExceptionDao(User.class);
         }
