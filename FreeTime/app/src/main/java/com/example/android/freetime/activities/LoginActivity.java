@@ -3,6 +3,7 @@ package com.example.android.freetime.activities;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -63,10 +64,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     //private View mLoginFormView;
-    private View mForgotPasswordView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        View mRegisterView;
+        View mForgotPasswordView;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
@@ -93,9 +97,31 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        mRegisterView = findViewById(R.id.link_register);
         //mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
         mForgotPasswordView = findViewById(R.id.link_forgotPassword);
+
+        mForgotPasswordView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {switchForgotPassword();}
+        });
+
+        mRegisterView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {switchRegister();}
+        });
+
+    }
+
+    private void switchForgotPassword(){
+        Intent iForgotPassword = new Intent(LoginActivity.this, MainActivity.class);
+        LoginActivity.this.startActivity(iForgotPassword);
+    }
+
+    private void switchRegister(){
+        Intent iRegister = new Intent(LoginActivity.this, RegisterActivity.class);
+        LoginActivity.this.startActivity(iRegister);
     }
 
     private void populateAutoComplete() {
@@ -291,14 +317,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         };
 
         int ADDRESS = 0;
-        int IS_PRIMARY = 1;
+        //int IS_PRIMARY = 1;
     }
 
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    private class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
         private final String mPassword;
@@ -340,7 +366,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mForgotPasswordView.setVisibility(View.VISIBLE);
+                //mForgotPasswordView.setVisibility(View.VISIBLE);
                 mPasswordView.requestFocus();
             }
         }

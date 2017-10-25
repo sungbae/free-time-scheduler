@@ -1,8 +1,11 @@
 package com.example.android.freetime.activities;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.freetime.R;
 import com.example.android.freetime.models.User;
@@ -12,21 +15,18 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    CalendarView calender;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView textView = (TextView) findViewById(R.id.templabel);
-
-        UserRepo userRepo = new UserRepo(this);
-        List<User> users = userRepo.findAll();
-        String userNames = "";
-        for (User user : users) {
-            userNames += user.getLastName() + ", ";
-        }
-
-        userNames = userNames.substring(0, userNames.length() - 2);
-
-        textView.setText(userNames);
+        calender = (CalendarView) findViewById(R.id.calender);
+        calender.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                Toast.makeText(getApplicationContext(), dayOfMonth + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

@@ -1,19 +1,27 @@
 <resources>
-    <string name="app_name">FreeTime</string>
-    <string name="title_activity_login">Login</string>
-
     <!-- Strings related to login -->
+    <string name="app_name">Just In Time</string>
+    <string name="title_activity_login">Login</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Login</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in">LOGIN</string>
+    <string name="action_forgot_Password">Forgot your password?</string>
+    <string name="action_register">Register</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="prompt_register">Register</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_register">RegisterActivity</string>
+
+    <!-- Strings related to register -->
+    <string name="title_activity_register"><u>Register</u></string>
+    <string name="prompt_first_name">First Name</string>
+    <string name="prompt_last_name">Last Name</string>
+    <string name="action_register_in_short">Confirm</string>
+    <string name="prompt_password_register">Password</string>
+    <string name="prompt_password_retype">Retype Password</string>
+    <string name="action_existing_member">Already a member?</string>
 </resources>

@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.android.freetime.R;
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
