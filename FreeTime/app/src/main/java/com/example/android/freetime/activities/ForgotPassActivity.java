@@ -15,23 +15,22 @@ import com.example.android.freetime.R;
 
 public class ForgotPassActivity extends AppCompatActivity {
 
-    private AutoCompleteTextView mEmailView;
-    private TextView mEnterEmail;
-    private Button btnNext;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_pass);
 
-        mEmailView = (AutoCompleteTextView)findViewById(R.id.emailAutoComplete);
-        mEmailView.setError(getString(R.string.text_email));
+        AutoCompleteTextView mEmailView = (AutoCompleteTextView)findViewById(R.id.emailAutoComplete);
+        mEmailView.setText(getString(R.string.text_email));
+        mEmailView.setVisibility(true ? View.VISIBLE : View.GONE);
 
-        mEnterEmail = (TextView)findViewById(R.id.enterEmailText);
-        mEnterEmail.setError(getString(R.string.text_enter_email_instruction));
+        TextView mEnterEmail = (TextView)findViewById(R.id.enterEmailText);
+        mEnterEmail.setText(getString(R.string.text_enter_email_instruction));
+        mEnterEmail.setVisibility(true ? View.VISIBLE : View.GONE);
 
-        btnNext = (Button)findViewById(R.id.btnNext);
-        btnNext.setError(getString(R.string.btn_next));
+        Button btnNext = (Button)findViewById(R.id.btnNext);
+        btnNext.setText(getString(R.string.btn_next));
+        btnNext.setVisibility(true ? View.VISIBLE : View.GONE);
     }
 
 }
