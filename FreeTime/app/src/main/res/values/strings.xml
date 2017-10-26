@@ -16,6 +16,11 @@
         completions."
     </string>
 
+    <!-- Strings related to forgot password -->
+    <string name="text_email">Email</string>
+    <string name="text_enter_email_instruction">Enter your email to recover your password</string>
+    <string name="btn_next">Next</string>
+
     <!-- Strings related to register -->
     <string name="title_activity_register"><u>Register</u></string>
     <string name="prompt_first_name">First Name</string>
@@ -24,4 +29,5 @@
     <string name="prompt_password_register">Password</string>
     <string name="prompt_password_retype">Retype Password</string>
     <string name="action_existing_member">Already a member?</string>
+    <string name="title_activity_forgot_pass">ForgotPassActivity</string>
 </resources>
